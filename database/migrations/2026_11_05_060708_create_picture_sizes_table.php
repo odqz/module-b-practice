@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('picture_sizes', function (Blueprint $table) {
             $table->id();
+            $table->string('pic_size_labael', 50);
+            $table->integer('pic_size_width');
+            $table->integer('pic_size_height');
+            $table->float('pic_size_price', 2);
             $table->timestamps();
         });
     }
