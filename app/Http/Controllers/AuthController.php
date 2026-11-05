@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreAuthRequest;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -18,15 +18,19 @@ class AuthController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAuthRequest $request)
     {
-        dd($request->all());
+        if (Auth::attempt($request->validated())) {
+            return redirect('/login');
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy()
     {
         Auth::logout();
 
