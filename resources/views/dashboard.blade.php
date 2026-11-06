@@ -2,40 +2,7 @@
 
 <x-layout>
   <div class="dashboard-layout">
-    <nav class="navigation" id="side-navigation">
-      <ul class="links">
-        <li class="active">
-          <a href="dashboard.html">
-            <i class="fa fa-tachometer-alt"></i>
-            Dashboard
-          </a>
-        </li>
-        <li>
-          <a href="events.html">
-            <i class="fa fa-calendar"></i>
-            Events
-          </a>
-        </li>
-        <li>
-          <a href="pictures.html">
-            <i class="fa fa-image"></i>
-            Pictures
-          </a>
-        </li>
-        <li>
-          <a href="orders.html">
-            <i class="fa fa-shopping-cart"></i>
-            Orders
-          </a>
-        </li>
-        <li>
-          <a href="settings.html">
-            <i class="fa fa-cog"></i>
-            Settings
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <x-sidebar dashboard="active"></x-sidebar>
     <div id="content">
       <div class="page-header">
         <h2>Dashboard</h2>
