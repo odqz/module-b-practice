@@ -1,0 +1,138 @@
+/* Content Area */
+#content {
+  padding: var(--space-xl);
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+}
+
+.page-header h2 {
+  font-size: 1.875rem;
+}
+
+/* Table */
+.table-responsive {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.themed-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.themed-table thead {
+  background-color: #f9fafb;
+}
+
+.themed-table th {
+  text-align: left;
+  padding: var(--space-md);
+  font-weight: 600;
+  color: var(--dark-2);
+  border-bottom: 2px solid var(--border);
+}
+
+.themed-table tbody tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.themed-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.themed-table td {
+  padding: var(--space-md);
+}
+
+.themed-table td a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius);
+}
+
+.status-pending {
+  color: var(--warning);
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.status-completed {
+  color: var(--success);
+  background: rgba(22, 163, 74, 0.1);
+}
+
+.status-cancelled {
+  color: var(--error);
+  background: rgba(220, 38, 38, 0.1);
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.btn-icon {
+  padding: var(--space-xs);
+  min-width: 36px;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+}
+
+.btn-complete {
+  background-color: var(--success);
+  color: white;
+}
+
+.btn-pending {
+  background-color: var(--warning);
+  color: white;
+}
+
+.btn-cancel {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-delete {
+  background-color: var(--error);
+  color: white;
+}
+
+.btn-icon:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  margin-bottom: 0.25rem;
+}
