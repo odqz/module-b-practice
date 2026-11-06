@@ -133,6 +133,48 @@ main {
   min-height: calc(100vh - 120px);
 }
 
+/* Sidebar Navigation */
+.navigation {
+  background: var(--dark-1);
+  padding: var(--space-lg) 0;
+}
+
+.links {
+  list-style: none;
+}
+
+.links li {
+  margin-bottom: 0.25rem;
+}
+
+.links a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-xl);
+  color: #d1d5db;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.links a:hover {
+  background: var(--dark-3);
+  color: white;
+}
+
+.links li.active a {
+  background: var(--primary);
+  color: white;
+  border-left: 4px solid var(--primary-dark);
+}
+
+.links i {
+  width: 20px;
+  text-align: center;
+}
+
+
 /* Footer */
 #footer {
   background: white;

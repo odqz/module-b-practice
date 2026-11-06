@@ -8,7 +8,7 @@
           <h2>Admin Login</h2>
           <p>Sign in to manage your events</p>
         </div>
-        <form class="login-form">
+        <form class="login-form" action="/login" method="post">
           <div class="form-group">
             <label for="email">
               Email
