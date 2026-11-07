@@ -40,6 +40,11 @@
             Login to Admin Panel
           </button>
         </form>
+        @if($errors->any())
+          @foreach($errors->all() as $error)
+            <p class="login-error-msg">{{ $error }}</p>
+          @endforeach
+        @endif
       </div>
       <div class="login-card guest-card">
         <div class="login-header">

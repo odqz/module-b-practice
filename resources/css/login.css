@@ -139,3 +139,9 @@
   color: var(--text-subtle);
   font-size: 0.875rem;
 }
+
+.login-error-msg {
+  margin-top: 16px;
+  font-weight: bold;
+  color: red;
+}

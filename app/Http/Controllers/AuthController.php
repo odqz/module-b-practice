@@ -21,9 +21,9 @@ class AuthController extends Controller
     public function store(StoreAuthRequest $request)
     {
         if (Auth::attempt($request->validated())) {
-            return redirect('/login');
+            return redirect()->route('dashboard');
         } else {
-            return redirect('/');
+            return redirect()->route('login')->withErrors(['Invalid email or password']);
         }
     }
 
