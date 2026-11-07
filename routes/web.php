@@ -9,18 +9,14 @@ use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
-    Route::redirect('/', '/login');
-
     Route::get('/login', [AuthController::class, 'create'])->name('login');
     Route::post('/login', [AuthController::class, 'store'])->name('login');
 });
 
 Route::middleware('auth')->group(function () {
-    Route::redirect('/', '/dashboard');
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/events', [EventController::class, 'index'])->name('events.index');
-    Route::get('/events/show', [EventController::class, 'show'])->name('orders.index');
+    Route::get('/events/show', [EventController::class, 'show'])->name('events.show');
     
     Route::get('/pictures', [PictureController::class, 'index'])->name('pictures.index');
     
