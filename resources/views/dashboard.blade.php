@@ -1,5 +1,4 @@
 @vite(['resources/css/dashboard.css'])
-
 <x-layout>
   <div class="dashboard-layout">
     <x-sidebar dashboard="active"></x-sidebar>

@@ -1,5 +1,4 @@
 @props(['dashboard' => '', 'events' => '', 'pictures' => '', 'orders' => '', 'settings' => '',])
-
 <nav class="navigation">
   <ul class="links">
     <li class="{{ $dashboard }}">
