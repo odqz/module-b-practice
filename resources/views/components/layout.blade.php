@@ -34,12 +34,12 @@
   <header id="header">
     <div class="header-container">
       <a href="dashboard.html" class="logo-link">
-        <img src="images/logo.svg" alt="Logo" class="logo-image" />
+        <img src="{{ asset('assests/images/logo.svg') }}" alt="Logo" class="logo-image" />
         <span class="logo-text">Photography Management</span>
       </a>
       @if (Auth::check())
         <div class="header-user">
-          <span class="welcome-text">Welcome, Admin</span>
+          <span class="welcome-text">Welcome, {{ Auth::user()->name }}</span>
           <form action="/logout" method="post">
             @method('DELETE')
             <button class="btn-logout">
