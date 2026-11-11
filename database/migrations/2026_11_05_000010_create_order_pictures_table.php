@@ -1,8 +1,5 @@
 <?php
 
-use App\Models\Order;
-use App\Models\Picture;
-use App\Models\PictureSize;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('order_pictures', function (Blueprint $table) {
             $table->id('order_picture_id');
-            $table->foreignIdFor(Order::class, 'order_id')->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Picture::class, 'pic_id')->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(PictureSize::class, 'pic_size_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('order_id')->constrained('orders', 'order_id')->onDelete('cascade');
+            $table->foreignId('pic_id')->constrained('pictures', 'pic_id')->onDelete('cascade');
+            $table->foreignId('pic_size_id')->constrained('picture_sizes', 'pic_size_id')->onDelete('cascade');
             $table->integer('pic_qty');
             $table->string('pic_order_note', 300);
             $table->timestamps();

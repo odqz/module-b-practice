@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('picture_sizes', function (Blueprint $table) {
+        Schema::create('event_accesses', function (Blueprint $table) {
             $table->id();
-            $table->string('pic_size_labael', 50);
-            $table->integer('pic_size_width');
-            $table->integer('pic_size_height');
-            $table->float('pic_size_price', 2);
+            $table->foreignId('event_id')->constrained('events', 'event_id')->onDelete('cascade');
+            $table->foreignId('cust_id')->constrained('customers', 'cust_id')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('picture_sizes');
+        Schema::dropIfExists('event_accesses');
     }
 };

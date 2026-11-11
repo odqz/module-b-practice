@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,14 +15,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $path = database_path('db-seeder.sql');
+
+        $sql = file_get_contents($path);
+
         $this->call([
             UserSeeder::class,
-            CategorySeeder::class,
-            EventSeeder::class,
-            PictureSeeder::class,
-            OrderPictureSeeder::class,
-            CustomerSeeder::class,
-            OrderSeeder::class,
         ]);
+
+        DB::unprepared($sql);
     }
 }

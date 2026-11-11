@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Category;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id('event_id');
-            $table->foreignIdFor(Category::class, 'cat_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('cat_id')->constrained('categories', 'cat_id')->onDelete('cascade');
             $table->string('event_name', 150);
             $table->enum('event_type', ['public', 'private']);
             $table->string('event_city');

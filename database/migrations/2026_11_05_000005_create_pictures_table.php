@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Event;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pictures', function (Blueprint $table) {
             $table->id('pic_id');
-            $table->foreignIdFor(Event::class, 'event_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('event_id')->constrained('events', 'event_id')->onDelete('cascade');
             $table->string('pic_name', 100);
             $table->string('pic_locator', 10);
             $table->boolean('pic_is_active');
