@@ -12,7 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('settings.categories.index', ['categories' => Category::all()]);
     }
 
     /**
@@ -20,7 +20,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('settings.categories.create');
     }
 
     /**
@@ -28,7 +28,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'cat_name' => 'string|required|unique:categories,cat_name',
+        ]);
+
+        Category::create($validated);
+
+        return redirect('settings/categories/');
     }
 
     /**

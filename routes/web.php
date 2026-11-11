@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\OrderController;
@@ -24,6 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/orders/show', [OrderController::class, 'show'])->name('orders.show');
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
+
+    Route::resource('/settings/categories', CategoryController::class)->only(['index', 'create', 'store', 'edit']);
 
     Route::delete('/logout', [AuthController::class, 'destroy'])->name('logout');
 });
