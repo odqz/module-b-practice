@@ -34,7 +34,7 @@ class CategoryController extends Controller
 
         Category::create($validated);
 
-        return redirect('settings/categories/');
+        return redirect('settings/categories');
     }
 
     /**

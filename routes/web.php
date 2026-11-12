@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
 
-    Route::resource('/settings/categories', CategoryController::class)->only(['index', 'create', 'store', 'edit']);
+    Route::resource('/settings/categories', CategoryController::class)->name('categories', CategoryController::class);
 
     Route::delete('/logout', [AuthController::class, 'destroy'])->name('logout');
 });

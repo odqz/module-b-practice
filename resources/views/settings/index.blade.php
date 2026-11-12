@@ -7,7 +7,7 @@
         <h2>Settings</h2>
       </div>
       <div class="settings-grid">
-        <a href="categories.html" class="setting-card">
+        <a href="{{ route('categories.index') }}" class="setting-card">
           <div class="setting-icon">
             <i class="fa fa-tags"></i>
           </div>
