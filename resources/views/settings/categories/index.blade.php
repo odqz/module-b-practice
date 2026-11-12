@@ -1,4 +1,4 @@
-@vite(['resources/css/category.css', 'resources/js/modal.js'])
+@vite(['resources/css/category.css', 'resources/js/modal.js', 'resources/css/form.css'])
 <x-layout>
   <div class="dashboard-layout">
     <x-sidebar settings="active"></x-sidebar>
@@ -47,45 +47,45 @@
           </tbody>
         </table>
       </div>
-    </div>
-    <!-- Create Category Modal -->
-    <div id="createCategoryModal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3>Add New Category</h3>
-          <button
-            type="button"
-            class="modal-close"
-            onclick="closeModal('createCategoryModal')"
-            aria-label="Close modal">
-            <i class="fa fa-times"></i>
-          </button>
-        </div>
-        <form action="{{ route('categories.store') }}" method="post" class="modal-form">
-          @csrf
-          <div class="form-field">
-            <label for="cat_name">Category Name</label>
-            <input
-              type="text"
-              name="cat_name"
-              id="cat_name"
-              placeholder="e.g. Weddings, Sports, Events"
-              required />
-          </div>
-          <div class="modal-actions">
+      <!-- Create Category Modal -->
+      <div id="createCategoryModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Add New Category</h3>
             <button
               type="button"
-              class="btn-secondary"
-              onclick="closeModal('createCategoryModal')">
+              class="modal-close"
+              onclick="closeModal('createCategoryModal')"
+              aria-label="Close modal">
               <i class="fa fa-times"></i>
-              Cancel
-            </button>
-            <button type="submit" class="btn-primary">
-              <i class="fa fa-plus"></i>
-              Create Category
             </button>
           </div>
-        </form>
+          <form action="{{ route('categories.store') }}" method="post" class="modal-form">
+            @csrf
+            <div class="form-field">
+              <label for="cat_name">Category Name</label>
+              <input
+                type="text"
+                name="cat_name"
+                id="cat_name"
+                placeholder="e.g. Weddings, Sports, Events"
+                required />
+            </div>
+            <div class="modal-actions">
+              <button
+                type="button"
+                class="btn-secondary"
+                onclick="closeModal('createCategoryModal')">
+                <i class="fa fa-times"></i>
+                Cancel
+              </button>
+              <button type="submit" class="btn-primary">
+                <i class="fa fa-plus"></i>
+                Create Category
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
