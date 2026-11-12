@@ -6,7 +6,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PictureController;
+use App\Http\Controllers\PictureSizeController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -27,6 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
 
     Route::resource('/settings/categories', CategoryController::class)->name('categories', CategoryController::class);
+    Route::resource('/settings/picture-sizes', PictureSizeController::class)->name('picture-sizes', PictureSizeController::class);
+    Route::resource('/settings/users', UserController::class)->name('users', UserController::class);
 
     Route::delete('/logout', [AuthController::class, 'destroy'])->name('logout');
 });
