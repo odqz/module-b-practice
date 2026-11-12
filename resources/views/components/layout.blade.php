@@ -24,8 +24,9 @@
     href="images/favicon/apple-touch-icon.png"
   />
   <!-- Local FontAwesome -->
-  <link rel="stylesheet" href="fontawesome/css/fontawesome.min.css" />
-  <link rel="stylesheet" href="fontawesome/css/solid.min.css" />
+  <link rel="stylesheet" href="{{ asset('assests/fontawesome/css/fontawesome.min.css') }}" />
+  <link rel="stylesheet" href="{{ asset('assests/fontawesome/css/regular.min.css') }}" />
+  <link rel="stylesheet" href="{{ asset('assests/fontawesome/css/solid.min.css') }}" />
   <!-- Custom CSS -->
   <link rel="stylesheet" href="event-access.css" />
   @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -33,7 +34,7 @@
 <body>
   <header id="header">
     <div class="header-container">
-      <a href="dashboard.html" class="logo-link">
+      <a href="{{ route('dashboard') }}" class="logo-link">
         <img src="{{ asset('assests/images/logo.svg') }}" alt="Logo" class="logo-image" />
         <span class="logo-text">Photography Management</span>
       </a>

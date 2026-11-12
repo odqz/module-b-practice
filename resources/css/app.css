@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import './form.css' layer(componenent);
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -172,31 +171,4 @@ main {
 .links i {
   width: 20px;
   text-align: center;
-}
-
-
-/* Footer */
-#footer {
-  background: white;
-  border-top: 1px solid var(--border);
-  padding: var(--space-md) var(--space-xl);
-  text-align: center;
-  color: var(--text-subtle);
-  font-size: 0.875rem;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .dashboard-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .navigation {
-    display: none;
-  }
-
-  .header-container {
-    flex-direction: column;
-    gap: var(--space-md);
-  }
 }

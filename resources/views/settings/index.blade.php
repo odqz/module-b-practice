@@ -19,7 +19,7 @@
             <i class="fa fa-chevron-right"></i>
           </div>
         </a>
-        <a href="picture-sizes.html" class="setting-card">
+        <a href="{{ route('picture-sizes.index') }}" class="setting-card">
           <div class="setting-icon">
             <i class="fa fa-ruler"></i>
           </div>
@@ -31,7 +31,7 @@
             <i class="fa fa-chevron-right"></i>
           </div>
         </a>
-        <a href="users.html" class="setting-card">
+        <a href="{{ route('users.index') }}" class="setting-card">
           <div class="setting-icon">
             <i class="fa fa-users"></i>
           </div>
