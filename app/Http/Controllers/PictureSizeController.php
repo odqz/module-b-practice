@@ -12,7 +12,7 @@ class PictureSizeController extends Controller
      */
     public function index()
     {
-        //
+        return view('settings.picture-sizes.index');
     }
 
     /**
