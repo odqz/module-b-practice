@@ -9,6 +9,8 @@ class Category extends Model
 {
     protected $guarded = [];
 
+    protected $primaryKey = 'cat_id';
+
     public function events(): HasMany
     {
         return $this->hasMany(Event::class);

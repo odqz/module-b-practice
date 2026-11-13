@@ -1,4 +1,4 @@
-@vite(['resources/css/category.css', 'resources/js/modal.js', 'resources/css/form.css'])
+@vite(['resources/css/settings/categories/category.css', 'resources/js/modal.js', 'resources/css/form.css'])
 <x-layout>
   <div class="dashboard-layout">
     <x-sidebar settings="active"></x-sidebar>
@@ -35,11 +35,13 @@
                   <button class="btn-icon btn-edit" title="Edit category">
                     <i class="fa fa-edit"></i>
                   </button>
-                  <button
-                    class="btn-icon btn-delete"
-                    title="Delete category">
-                    <i class="fa fa-trash"></i>
-                  </button>
+                  <form action="/settings/categories/{{ $category->cat_id }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn-icon btn-delete" title="Delete category">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </form>
                 </div>
               </td>
             </tr>
