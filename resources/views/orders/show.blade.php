@@ -1,4 +1,4 @@
-@vite(['resources/css/order-show.css'])
+@vite(['resources/css/orders/order-show.css'])
 <x-layout>
   <div class="dashboard-layout">
     <x-sidebar orders="active"></x-sidebar>

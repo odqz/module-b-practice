@@ -1,4 +1,4 @@
-@vite(['resources/css/settings.css'])
+@vite(['resources/css/settings/settings.css'])
 <x-layout>
   <div class="dashboard-layout">
     <x-sidebar settings="active"></x-sidebar>

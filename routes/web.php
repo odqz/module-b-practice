@@ -28,9 +28,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
 
-    Route::resource('/settings/categories', CategoryController::class)->name('categories', CategoryController::class);
-    Route::resource('/settings/picture-sizes', PictureSizeController::class)->name('picture-sizes', PictureSizeController::class);
-    Route::resource('/settings/users', UserController::class)->name('users', UserController::class);
+    Route::resource('/settings/categories', CategoryController::class)->only(['index', 'store', 'update', 'destroy'])->name('categories', CategoryController::class);
+    Route::resource('/settings/picture-sizes', PictureSizeController::class)->only(['index', 'store', 'update', 'destroy'])->name('picture-sizes', PictureSizeController::class);
+    Route::resource('/settings/users', UserController::class)->only(['index', 'store', 'destroy'])->name('users', UserController::class);
 
     Route::delete('/logout', [AuthController::class, 'destroy'])->name('logout');
 });

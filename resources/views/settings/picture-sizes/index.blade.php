@@ -1,9 +1,10 @@
+@vite(['resources/css/settings/picture-sizes/picture-sizes.css', 'resources/js/modal.js', 'resources/css/form.css'])
 <x-layout>
   <div class="dashboard-layout">
     <x-sidebar settings="active"></x-sidebar>
     <div id="content">
       <div class="back-link">
-        <a href="settings.html">
+        <a href="{{ route('settings.index') }}">
           <i class="fa fa-arrow-left"></i>
           Back to Settings
         </a>

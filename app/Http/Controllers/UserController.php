@@ -12,7 +12,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('settings.users.index');
+        return view('settings.users.index', ['users' => User::all()]);
     }
 
     /**
@@ -60,6 +60,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        dd($user->all());
     }
 }

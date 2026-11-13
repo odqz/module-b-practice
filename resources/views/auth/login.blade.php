@@ -1,4 +1,4 @@
-@vite(['resources/css/login.css'])
+@vite(['resources/css/auth/login.css'])
 <x-layout>
   <div class="login-page">
     <div class="login-container">

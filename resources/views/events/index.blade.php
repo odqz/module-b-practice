@@ -1,4 +1,4 @@
-@vite(['resources/css/events.css'])
+@vite(['resources/css/events/events.css'])
 <x-layout>
  <div class="dashboard-layout">
     <x-sidebar events="active"></x-sidebar>

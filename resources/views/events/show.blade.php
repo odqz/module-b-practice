@@ -1,4 +1,4 @@
-@vite(['resources/css/event-show.css'])
+@vite(['resources/css/events/event-show.css'])
 <x-layout>
   <div class="container">
     <div class="event-header">
