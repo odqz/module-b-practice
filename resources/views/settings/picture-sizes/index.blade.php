@@ -11,7 +11,7 @@
       </div>
       <div class="page-header">
         <h2>Picture Sizes</h2>
-        <button class="btn-primary">
+        <button class="btn-primary" onclick="openModal('createSizeModal')">
           <i class="fa fa-plus"></i>
           Create Size
         </button>
@@ -29,76 +29,112 @@
             </tr>
           </thead>
           <tbody>
+            @foreach($picture_sizes as $picture_size)
             <tr>
-              <td>1</td>
-              <td>4x6</td>
-              <td>4" x 6"</td>
-              <td>£5.00</td>
+              <td>{{ $picture_size->pic_size_id }}</td>
+              <td>{{ $picture_size->pic_size_label }}</td>
+              <td>{{ $picture_size->pic_size_height }} * {{ $picture_size->pic_size_width }}</td>
               <td class="hide-mobile">Standard photo size</td>
               <td>
                 <div class="actions">
-                  <button class="btn-icon btn-edit" title="Edit size">
+                  <button class="btn-icon btn-edit" title="Edit size" onclick="openModal('editSizeModal')">
                     <i class="fa fa-edit"></i>
                   </button>
-                  <button class="btn-icon btn-delete" title="Delete size">
-                    <i class="fa fa-trash"></i>
-                  </button>
+                  <form action="{{ route('picture-sizes.destroy', ['picture_size' => $picture_size]) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn-icon btn-delete" title="Delete size">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </form>
                 </div>
               </td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>5x7</td>
-              <td>5" x 7"</td>
-              <td>£8.00</td>
-              <td class="hide-mobile">Medium print</td>
-              <td>
-                <div class="actions">
-                  <button class="btn-icon btn-edit" title="Edit size">
-                    <i class="fa fa-edit"></i>
-                  </button>
-                  <button class="btn-icon btn-delete" title="Delete size">
-                    <i class="fa fa-trash"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>8x10</td>
-              <td>8" x 10"</td>
-              <td>£12.00</td>
-              <td class="hide-mobile">Large print</td>
-              <td>
-                <div class="actions">
-                  <button class="btn-icon btn-edit" title="Edit size">
-                    <i class="fa fa-edit"></i>
-                  </button>
-                  <button class="btn-icon btn-delete" title="Delete size">
-                    <i class="fa fa-trash"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>11x14</td>
-              <td>11" x 14"</td>
-              <td>£20.00</td>
-              <td class="hide-mobile">Extra large print</td>
-              <td>
-                <div class="actions">
-                  <button class="btn-icon btn-edit" title="Edit size">
-                    <i class="fa fa-edit"></i>
-                  </button>
-                  <button class="btn-icon btn-delete" title="Delete size">
-                    <i class="fa fa-trash"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
+            @endforeach
           </tbody>
         </table>
+      </div>
+      <!-- Create Picture Size Modal -->
+      <div id="createSizeModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Add New Picture Size</h3>
+            <button
+              type="button"
+              class="modal-close"
+              onclick="closeModal('createSizeModal')"
+              aria-label="Close modal">
+              <i class="fa fa-times"></i>
+            </button>
+          </div>
+
+          <form action="{{ route('picture-sizes.store') }}" method="post" class="modal-form">
+            @csrf
+            <div class="form-field">
+              <label for="pic_size_label">Label</label>
+              <input
+                type="text"
+                name="pic_size_label"
+                id="pic_size_label"
+                placeholder="e.g. 4x6, 8x10"
+                required />
+            </div>
+
+            <div class="form-field">
+              <label for="pic_size_width">Width (inches)</label>
+              <input
+                type="number"
+                name="pic_size_width"
+                id="pic_size_width"
+                placeholder="Width"
+                min="0.1"
+                step="0.1"
+                required />
+            </div>
+
+            <div class="form-field">
+              <label for="pic_size_height">Height (inches)</label>
+              <input
+                type="number"
+                name="pic_size_height"
+                id="pic_size_height"
+                placeholder="Height"
+                min="0.1"
+                step="0.1"
+                required />
+            </div>
+
+            <div class="form-field">
+              <label for="pic_size_price">Price</label>
+              <div class="price-input-wrapper">
+                <!-- <span class="currency-symbol">£</span> -->
+                <input
+                  type="number"
+                  name="pic_size_price"
+                  id="pic_size_price"
+                  value="0.01"
+                  min="0.01"
+                  step="0.01"
+                  placeholder="0.00"
+                  required />
+              </div>
+            </div>
+
+            <div class="modal-actions">
+              <button
+                type="button"
+                class="btn-secondary"
+                onclick="closeModal('createSizeModal')">
+                <i class="fa fa-times"></i>
+                Cancel
+              </button>
+              <button type="submit" class="btn-primary">
+                <i class="fa fa-plus"></i>
+                Create Size
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

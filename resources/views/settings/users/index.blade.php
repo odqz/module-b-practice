@@ -43,7 +43,7 @@
                   <button class="btn-icon btn-edit" title="Edit user">
                     <i class="fa fa-edit"></i>
                   </button>
-                  <form action="{{ route('users.destroy', ['user' => $user->id]) }}" method="post">
+                  <form action="{{ route('users.destroy', ['user' => $user]) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button class="btn-icon btn-delete" title="Delete user">

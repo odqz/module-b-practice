@@ -26,16 +26,25 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($categories as $category)
+            @foreach($categories as $c)
+            @if(session('success'))
+              <p>{{ session('success') }}</p>
+            @endif
             <tr>
-              <td>{{ $category->cat_id }}</td>
-              <td>{{ $category->cat_name }}</td>
+              <form action="{{ route('categories.update', ['category' => $c]) }}" method="post" id="edit-category">
+                @csrf
+                @method('PATCH')
+                <td>{{ $c->cat_id }}</td>
+                <td>
+                  <input type="text" name="cat_name" value="{{ old('cat_name', $c->cat_name) }}" required>
+                </td>
+              </form>
               <td>
                 <div class="actions">
-                  <button class="btn-icon btn-edit" title="Edit category">
+                  <button class="btn-icon btn-edit" title="Edit category" form="edit-category">
                     <i class="fa fa-edit"></i>
                   </button>
-                  <form action="/settings/categories/{{ $category->cat_id }}" method="post">
+                  <form action="{{ route('categories.destroy', ['category' => $c]) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button class="btn-icon btn-delete" title="Delete category">

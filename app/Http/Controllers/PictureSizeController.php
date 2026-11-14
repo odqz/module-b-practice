@@ -12,7 +12,7 @@ class PictureSizeController extends Controller
      */
     public function index()
     {
-        return view('settings.picture-sizes.index');
+        return view('settings.picture-sizes.index', ['picture_sizes' => PictureSize::all()]);
     }
 
     /**
@@ -28,7 +28,16 @@ class PictureSizeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'pic_size_label' => 'required|string',
+            'pic_size_width' => 'required|integer',
+            'pic_size_height' => 'required|integer',
+            'pic_size_price' => 'required|numeric',
+        ]);
+
+        PictureSize::create($validated);
+
+        return redirect()->route('picture-sizes.index');
     }
 
     /**
@@ -60,6 +69,8 @@ class PictureSizeController extends Controller
      */
     public function destroy(PictureSize $pictureSize)
     {
-        //
+        $pictureSize->delete();
+
+        return redirect()->route('picture-sizes.index');
     }
 }
