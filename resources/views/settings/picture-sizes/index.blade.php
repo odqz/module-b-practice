@@ -32,12 +32,20 @@
             @foreach($picture_sizes as $picture_size)
             <tr>
               <td>{{ $picture_size->pic_size_id }}</td>
-              <td>{{ $picture_size->pic_size_label }}</td>
-              <td>{{ $picture_size->pic_size_height }} * {{ $picture_size->pic_size_width }}</td>
-              <td class="hide-mobile">Standard photo size</td>
+              <form action="{{ route('picture-sizes.update', ['picture_size' => $picture_size]) }}" method="post" id="edit-picture-size-{{ $picture_size->pic_size_id }}">
+                @csrf
+                @method('PATCH')
+                <td>
+                  <input type="text" name="pic_size_label" value="{{ $picture_size->pic_size_label }}" required>
+                </td>
+                <td>{{ $picture_size->pic_size_width }} * {{ $picture_size->pic_size_height }}</td>
+                <td class="hide-mobile">
+                  <input type="number" name="pic_size_price" value="{{ $picture_size->pic_size_price }}" step="0.01" class="price-input" required>
+                </td>
+              </form>
               <td>
                 <div class="actions">
-                  <button class="btn-icon btn-edit" title="Edit size" onclick="openModal('editSizeModal')">
+                  <button class="btn-icon btn-edit" title="Edit size" id="edit-category" form="edit-picture-size-{{ $picture_size->pic_size_id }}">
                     <i class="fa fa-edit"></i>
                   </button>
                   <form action="{{ route('picture-sizes.destroy', ['picture_size' => $picture_size]) }}" method="post">

@@ -61,7 +61,14 @@ class PictureSizeController extends Controller
      */
     public function update(Request $request, PictureSize $pictureSize)
     {
-        //
+        $validated = $request->validate([
+            'pic_size_label' => 'required|string',
+            'pic_size_price' => 'required|numeric',
+        ]);
+
+        $pictureSize->update($validated);
+
+        return redirect()->route('picture-sizes.index');
     }
 
     /**
