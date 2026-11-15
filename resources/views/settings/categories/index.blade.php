@@ -26,25 +26,22 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($categories as $c)
-            @if(session('success'))
-              <p>{{ session('success') }}</p>
-            @endif
+            @foreach($categories as $category)
             <tr>
-              <form action="{{ route('categories.update', ['category' => $c]) }}" method="post" id="edit-category">
+              <td>{{ $category->cat_id }}</td>
+              <form action="{{ route('categories.update', ['category' => $category]) }}" method="post" id="edit-category-{{ $category->cat_id }}">
                 @csrf
                 @method('PATCH')
-                <td>{{ $c->cat_id }}</td>
                 <td>
-                  <input type="text" name="cat_name" value="{{ old('cat_name', $c->cat_name) }}" required>
+                  <input type="text" name="cat_name" value="{{ old('cat_name', $category->cat_name) }}" required>
                 </td>
               </form>
               <td>
                 <div class="actions">
-                  <button class="btn-icon btn-edit" title="Edit category" form="edit-category">
+                  <button class="btn-icon btn-edit" title="Edit category" form="edit-category-{{ $category->cat_id }}">
                     <i class="fa fa-edit"></i>
                   </button>
-                  <form action="{{ route('categories.destroy', ['category' => $c]) }}" method="post">
+                  <form action="{{ route('categories.destroy', ['category' => $category]) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button class="btn-icon btn-delete" title="Delete category">
