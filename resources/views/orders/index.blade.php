@@ -21,13 +21,14 @@
             </tr>
           </thead>
           <tbody>
+            @foreach($orders as $order)
             <tr>
-              <td><a href="order-show.html">#ORD-001</a></td>
-              <td>John Smith</td>
-              <td>2025-01-15</td>
-              <td>N/A</td>
-              <td class="hide-mobile">Rush delivery</td>
-              <td>£45.00</td>
+              <td><a href="order-show.html">#ORD-0{{ $order->order_id }}</a></td>
+              <td>{{ $order->order_id }}</td>
+              <td>{{ $order->order_date }}</td>
+              <td></td>
+              <td class="hide-mobile">{{ $order->order_note }}</td>
+              <td></td>
               <td>
                 <span class="status-badge status-pending">
                   <i class="fa fa-clock"></i>
@@ -51,60 +52,7 @@
                 </div>
               </td>
             </tr>
-            <tr>
-              <td><a href="order-show.html">#ORD-002</a></td>
-              <td>Sarah Johnson</td>
-              <td>2025-01-12</td>
-              <td>2025-01-18</td>
-              <td class="hide-mobile">Standard delivery</td>
-              <td>£32.50</td>
-              <td>
-                <span class="status-badge status-completed">
-                  <i class="fa fa-check-circle"></i>
-                  <span class="hide-mobile-text">Completed</span>
-                </span>
-              </td>
-              <td>
-                <div class="actions">
-                  <button
-                    class="btn-icon btn-pending"
-                    title="Mark as Pending"
-                  >
-                    <i class="fa fa-undo"></i>
-                  </button>
-                  <button class="btn-icon btn-cancel" title="Cancel order">
-                    <i class="fa fa-times-circle"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><a href="order-show.html">#ORD-003</a></td>
-              <td>Michael Brown</td>
-              <td>2025-01-10</td>
-              <td>N/A</td>
-              <td class="hide-mobile">Canvas print</td>
-              <td>£58.00</td>
-              <td>
-                <span class="status-badge status-cancelled">
-                  <i class="fa fa-ban"></i>
-                  <span class="hide-mobile-text">Cancelled</span>
-                </span>
-              </td>
-              <td>
-                <div class="actions">
-                  <button
-                    class="btn-icon btn-pending"
-                    title="Mark as Pending"
-                  >
-                    <i class="fa fa-undo"></i>
-                  </button>
-                  <button class="btn-icon btn-delete" title="Delete order">
-                    <i class="fa fa-trash"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
+            @endforeach
           </tbody>
         </table>
       </div>
